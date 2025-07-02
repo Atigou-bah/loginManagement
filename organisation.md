@@ -22,8 +22,10 @@ class Connexion {
 }
 
 class DataBase {
-  - utilisateurs: List<CreationCompte>
-  - ajouterUtilisateur(u: Utilisateur, date: Date)
+  - connexionMySQL: Connection
+  + ajouterUtilisateur(u: Utilisateur, date: Date)
+  + chercherUtilisateur(mail: String): Utilisateur
+  + verifierConnexion(identifiant: String, mdp: String): boolean
 }
 
 class UpdatePassword {
@@ -34,7 +36,7 @@ class UpdatePassword {
 }
 
 CreationCompte --> Utilisateur
-DataBase --> CreationCompte
+DataBase --> CreationCompte : gère via MySQL
 Connexion --> Utilisateur : utilise identifiant
 UpdatePassword --> Utilisateur : utilise identifiant
 
